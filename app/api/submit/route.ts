@@ -17,7 +17,7 @@ export const POST = auth(async function POST(req) {
         artist,
         url,
         user: {
-          connect: { id: req.auth.userId }
+          connect: { email: req.auth.user?.email ?? "" },
         }
       }
     })

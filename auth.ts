@@ -3,29 +3,44 @@ import GoogleProvider from "next-auth/providers/google";
 import { prisma } from "@/lib/prisma"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-    providers: [
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID || "",
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET || ""
-        })
-    ],
-    callbacks: {
-        async signIn({ user }) {
-          // Check if user exists in your database
-          const existingUser = await prisma.user.findUnique({
-            where: { email: user.email! }
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || ""
+    })
+  ],
+  callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider === "google" && user?.email) {
+
+        if (user.email != process.env.ADMIN_EMAIL) {
+          // console.error("Invalid email domain:", user.email)
+          return false // Reject sign-in for admin email
+        }
+        
+        try {
+          // Check if the user is already in the database
+          const prismaUser = await prisma.user.findUnique({
+            where: { email: user.email },
           })
-    
-          if (!existingUser) {
+          
+          // If the user is not in the database, create a new user
+          if (!prismaUser) {
             await prisma.user.create({
               data: {
-                email: user.email!,
-                name: user.name ?? null
-              }
+                email: user.email,
+                name: user.name || "",
+              },
             })
           }
-    
-          return true // allow sign-in
-        },
-      },
+          return true
+        } catch (error) {
+          console.error("Database error during sign in:", error)
+          // Still allow sign in even if database operation fails
+          return true
+        }
+      }
+      return false // Reject sign-in for non-Google accounts
+    },
+  },
 })
