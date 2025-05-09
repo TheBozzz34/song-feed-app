@@ -1,20 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Play } from 'lucide-react'
-
-type Song = {
-  id: string;
-  title: string;
-  artist: string;
-  url: string;
-  coverArt: string;
-  createdAt: string;
-  slug: string;
-  user: {
-    name: string | null;
-    email: string;
-  };
-};
+import Image from "next/image";
+import { Song } from "@/app/types/song"; // Adjust the import path as necessary
 
 export default function FeedPage() {
   const [songs, setSongs] = useState<Song[]>([]);
@@ -41,10 +29,12 @@ export default function FeedPage() {
             key={song.id}
             className="w-full bg-gray-800 p-4 rounded-lg shadow-md flex items-center"
           >
-            <img
+            <Image
               src={song.coverArt}
               alt={song.title}
               className="w-16 h-16 rounded-md shadow-lg mr-4"
+              width={64}
+              height={64}
             />
             <div className="flex-1">
               <h2 className="text-xl font-semibold">{song.title}</h2>

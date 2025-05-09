@@ -20,7 +20,7 @@ export const POST = auth(async function POST(req) {
     const spotifyTrack = await spotify.tracks.get(trackId);
 
     const title = spotifyTrack?.name ?? "Unknown Title"
-    const artist = spotifyTrack?.artists.map((a: any) => a.name).join(", ") ?? "Unknown Artist"
+    const artist = spotifyTrack?.artists.map((a: { name: string }) => a.name).join(", ") ?? "Unknown Artist"
     const url = `https://open.spotify.com/track/${trackId}`
     const coverArt = spotifyTrack?.album?.images?.[0]?.url || ''
 

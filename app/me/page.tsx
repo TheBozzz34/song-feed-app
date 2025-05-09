@@ -1,17 +1,10 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-
-type Song = {
-  id: string;
-  title: string;
-  artist: string;
-  url: string;
-  createdAt: string;
-};
+import { Song } from "@/app/types/song"; // Adjust the import path as necessary
 
 export default function ProfileFeedPage() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +23,7 @@ export default function ProfileFeedPage() {
           }
           const data = await res.json();
           setSongs(data);
-        } catch (err) {
+        } catch {
           setError("Failed to fetch songs");
         } finally {
           setLoading(false);
@@ -61,7 +54,7 @@ export default function ProfileFeedPage() {
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
       {!loading && songs.length === 0 && (
-        <p>You haven't submitted any songs yet.</p>
+        <p>You haven&apos;t submitted any songs yet.</p>
       )}
       <ul className="space-y-4">
         {songs.map((song) => (
