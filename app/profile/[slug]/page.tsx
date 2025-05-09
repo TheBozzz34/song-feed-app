@@ -3,11 +3,9 @@
 
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import { ErrorMessage } from "@/app/components/ErrorMessage"; // Create this custom component
-import { UserProfile } from "@/app/components/UserProfile"; // Create this custom component
-import { Spinner } from "@/app/components/Spinner"; // Create this custom component
-
-// Move types to a separate file for reusability
+import { ErrorMessage } from "@/app/components/ErrorMessage"; 
+import { UserProfile } from "@/app/components/UserProfile"; 
+import { Spinner } from "@/app/components/Spinner"; 
 import { User } from "@/app/types/user";
 
 export default function ProfilePage() {

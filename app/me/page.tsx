@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { Song } from "@/app/types/song"; // Adjust the import path as necessary
+import { Song } from "@/app/types/song"; 
 
 export default function ProfileFeedPage() {
   const { status } = useSession();
@@ -34,12 +34,11 @@ export default function ProfileFeedPage() {
     }
   }, [status]);
 
-  // Show loading state if still authenticating
   if (status === "loading") {
     return <div className="min-h-screen bg-black text-white p-8">Loading session...</div>;
   }
 
-  // Show message if not authenticated
+
   if (status !== "authenticated") {
     return (
       <div className="min-h-screen bg-black text-white p-8">

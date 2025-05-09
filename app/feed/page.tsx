@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Play } from 'lucide-react'
 import Image from "next/image";
-import { Song } from "@/app/types/song"; // Adjust the import path as necessary
+import { Song } from "@/app/types/song"; 
 
 export default function FeedPage() {
   const [songs, setSongs] = useState<Song[]>([]);
