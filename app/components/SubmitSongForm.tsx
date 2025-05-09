@@ -3,31 +3,40 @@
 import { useState } from 'react'
 
 export default function SubmitSongForm() {
-  const [title, setTitle] = useState('')
-  const [artist, setArtist] = useState('')
-  const [url, setUrl] = useState('')
+  const [trackInput, setTrackInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+
+  const extractTrackId = (input: string) => {
+    const match = input.match(/(?:track\/|spotify:track:)([a-zA-Z0-9]{22})/)
+    return match ? match[1] : input.trim()
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setMessage(null)
 
+    const trackId = extractTrackId(trackInput)
+
+    if (!trackId || trackId.length !== 22) {
+      setMessage('Invalid Spotify track ID or URL')
+      setLoading(false)
+      return
+    }
+
     const res = await fetch('/api/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title, artist, url }),
+      body: JSON.stringify({ trackId }),
     })
 
     const result = await res.json()
     if (res.ok) {
       setMessage('Song submitted successfully!')
-      setTitle('')
-      setArtist('')
-      setUrl('')
+      setTrackInput('')
     } else {
       setMessage(result.message || 'Something went wrong')
     }
@@ -41,27 +50,9 @@ export default function SubmitSongForm() {
 
       <input
         type="text"
-        placeholder="Song Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-        className="w-full p-2 bg-gray-800 rounded border border-gray-600 focus:outline-none"
-      />
-
-      <input
-        type="text"
-        placeholder="Artist"
-        value={artist}
-        onChange={(e) => setArtist(e.target.value)}
-        required
-        className="w-full p-2 bg-gray-800 rounded border border-gray-600 focus:outline-none"
-      />
-
-      <input
-        type="url"
-        placeholder="URL"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
+        placeholder="Spotify Track ID or URL"
+        value={trackInput}
+        onChange={(e) => setTrackInput(e.target.value)}
         required
         className="w-full p-2 bg-gray-800 rounded border border-gray-600 focus:outline-none"
       />
@@ -69,7 +60,7 @@ export default function SubmitSongForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 p-2 rounded"
+        className="w-full bg-green-600 hover:bg-green-700 disabled:opacity-50 p-2 rounded"
       >
         {loading ? 'Submitting...' : 'Submit'}
       </button>

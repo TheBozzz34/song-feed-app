@@ -1005,6 +1005,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     createdAt: Date | null
+    slug: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1012,6 +1013,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     createdAt: Date | null
+    slug: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1019,6 +1021,7 @@ export namespace Prisma {
     email: number
     name: number
     createdAt: number
+    slug: number
     _all: number
   }
 
@@ -1028,6 +1031,7 @@ export namespace Prisma {
     email?: true
     name?: true
     createdAt?: true
+    slug?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1035,6 +1039,7 @@ export namespace Prisma {
     email?: true
     name?: true
     createdAt?: true
+    slug?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1042,6 +1047,7 @@ export namespace Prisma {
     email?: true
     name?: true
     createdAt?: true
+    slug?: true
     _all?: true
   }
 
@@ -1122,6 +1128,7 @@ export namespace Prisma {
     email: string
     name: string | null
     createdAt: Date
+    slug: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1146,6 +1153,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     createdAt?: boolean
+    slug?: boolean
     songs?: boolean | User$songsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1155,6 +1163,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     createdAt?: boolean
+    slug?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1162,6 +1171,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     createdAt?: boolean
+    slug?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1169,9 +1179,10 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     createdAt?: boolean
+    slug?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "createdAt" | "slug", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     songs?: boolean | User$songsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1189,6 +1200,7 @@ export namespace Prisma {
       email: string
       name: string | null
       createdAt: Date
+      slug: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1617,6 +1629,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly slug: FieldRef<"User", 'String'>
   }
     
 
@@ -2062,6 +2075,7 @@ export namespace Prisma {
     title: string | null
     artist: string | null
     url: string | null
+    coverArt: string | null
     userId: string | null
     createdAt: Date | null
   }
@@ -2071,6 +2085,7 @@ export namespace Prisma {
     title: string | null
     artist: string | null
     url: string | null
+    coverArt: string | null
     userId: string | null
     createdAt: Date | null
   }
@@ -2080,6 +2095,7 @@ export namespace Prisma {
     title: number
     artist: number
     url: number
+    coverArt: number
     userId: number
     createdAt: number
     _all: number
@@ -2091,6 +2107,7 @@ export namespace Prisma {
     title?: true
     artist?: true
     url?: true
+    coverArt?: true
     userId?: true
     createdAt?: true
   }
@@ -2100,6 +2117,7 @@ export namespace Prisma {
     title?: true
     artist?: true
     url?: true
+    coverArt?: true
     userId?: true
     createdAt?: true
   }
@@ -2109,6 +2127,7 @@ export namespace Prisma {
     title?: true
     artist?: true
     url?: true
+    coverArt?: true
     userId?: true
     createdAt?: true
     _all?: true
@@ -2191,6 +2210,7 @@ export namespace Prisma {
     title: string
     artist: string
     url: string
+    coverArt: string | null
     userId: string
     createdAt: Date
     _count: SongCountAggregateOutputType | null
@@ -2217,6 +2237,7 @@ export namespace Prisma {
     title?: boolean
     artist?: boolean
     url?: boolean
+    coverArt?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2227,6 +2248,7 @@ export namespace Prisma {
     title?: boolean
     artist?: boolean
     url?: boolean
+    coverArt?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2237,6 +2259,7 @@ export namespace Prisma {
     title?: boolean
     artist?: boolean
     url?: boolean
+    coverArt?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2247,11 +2270,12 @@ export namespace Prisma {
     title?: boolean
     artist?: boolean
     url?: boolean
+    coverArt?: boolean
     userId?: boolean
     createdAt?: boolean
   }
 
-  export type SongOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "artist" | "url" | "userId" | "createdAt", ExtArgs["result"]["song"]>
+  export type SongOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "artist" | "url" | "coverArt" | "userId" | "createdAt", ExtArgs["result"]["song"]>
   export type SongInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2272,6 +2296,7 @@ export namespace Prisma {
       title: string
       artist: string
       url: string
+      coverArt: string | null
       userId: string
       createdAt: Date
     }, ExtArgs["result"]["song"]>
@@ -2702,6 +2727,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Song", 'String'>
     readonly artist: FieldRef<"Song", 'String'>
     readonly url: FieldRef<"Song", 'String'>
+    readonly coverArt: FieldRef<"Song", 'String'>
     readonly userId: FieldRef<"Song", 'String'>
     readonly createdAt: FieldRef<"Song", 'DateTime'>
   }
@@ -3136,7 +3162,8 @@ export namespace Prisma {
     id: 'id',
     email: 'email',
     name: 'name',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    slug: 'slug'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3147,6 +3174,7 @@ export namespace Prisma {
     title: 'title',
     artist: 'artist',
     url: 'url',
+    coverArt: 'coverArt',
     userId: 'userId',
     createdAt: 'createdAt'
   };
@@ -3236,6 +3264,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
+    slug?: StringNullableFilter<"User"> | string | null
     songs?: SongListRelationFilter
   }
 
@@ -3244,25 +3273,28 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    slug?: SortOrderInput | SortOrder
     songs?: SongOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
+    slug?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     songs?: SongListRelationFilter
-  }, "id" | "email">
+  }, "id" | "email" | "slug">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    slug?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -3276,6 +3308,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    slug?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type SongWhereInput = {
@@ -3286,6 +3319,7 @@ export namespace Prisma {
     title?: StringFilter<"Song"> | string
     artist?: StringFilter<"Song"> | string
     url?: StringFilter<"Song"> | string
+    coverArt?: StringNullableFilter<"Song"> | string | null
     userId?: StringFilter<"Song"> | string
     createdAt?: DateTimeFilter<"Song"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3296,6 +3330,7 @@ export namespace Prisma {
     title?: SortOrder
     artist?: SortOrder
     url?: SortOrder
+    coverArt?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -3309,6 +3344,7 @@ export namespace Prisma {
     title?: StringFilter<"Song"> | string
     artist?: StringFilter<"Song"> | string
     url?: StringFilter<"Song"> | string
+    coverArt?: StringNullableFilter<"Song"> | string | null
     userId?: StringFilter<"Song"> | string
     createdAt?: DateTimeFilter<"Song"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3319,6 +3355,7 @@ export namespace Prisma {
     title?: SortOrder
     artist?: SortOrder
     url?: SortOrder
+    coverArt?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     _count?: SongCountOrderByAggregateInput
@@ -3334,6 +3371,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Song"> | string
     artist?: StringWithAggregatesFilter<"Song"> | string
     url?: StringWithAggregatesFilter<"Song"> | string
+    coverArt?: StringNullableWithAggregatesFilter<"Song"> | string | null
     userId?: StringWithAggregatesFilter<"Song"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Song"> | Date | string
   }
@@ -3343,6 +3381,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     createdAt?: Date | string
+    slug?: string | null
     songs?: SongCreateNestedManyWithoutUserInput
   }
 
@@ -3351,6 +3390,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     createdAt?: Date | string
+    slug?: string | null
     songs?: SongUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -3359,6 +3399,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
     songs?: SongUpdateManyWithoutUserNestedInput
   }
 
@@ -3367,6 +3408,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
     songs?: SongUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -3375,6 +3417,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     createdAt?: Date | string
+    slug?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -3382,6 +3425,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -3389,6 +3433,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SongCreateInput = {
@@ -3396,6 +3441,7 @@ export namespace Prisma {
     title: string
     artist: string
     url: string
+    coverArt?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutSongsInput
   }
@@ -3405,6 +3451,7 @@ export namespace Prisma {
     title: string
     artist: string
     url: string
+    coverArt?: string | null
     userId: string
     createdAt?: Date | string
   }
@@ -3414,6 +3461,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     artist?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    coverArt?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSongsNestedInput
   }
@@ -3423,6 +3471,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     artist?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    coverArt?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3432,6 +3481,7 @@ export namespace Prisma {
     title: string
     artist: string
     url: string
+    coverArt?: string | null
     userId: string
     createdAt?: Date | string
   }
@@ -3441,6 +3491,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     artist?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    coverArt?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3449,6 +3500,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     artist?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    coverArt?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3514,6 +3566,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
+    slug?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -3521,6 +3574,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
+    slug?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -3528,6 +3582,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
+    slug?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3590,6 +3645,7 @@ export namespace Prisma {
     title?: SortOrder
     artist?: SortOrder
     url?: SortOrder
+    coverArt?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -3599,6 +3655,7 @@ export namespace Prisma {
     title?: SortOrder
     artist?: SortOrder
     url?: SortOrder
+    coverArt?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -3608,6 +3665,7 @@ export namespace Prisma {
     title?: SortOrder
     artist?: SortOrder
     url?: SortOrder
+    coverArt?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -3794,6 +3852,7 @@ export namespace Prisma {
     title: string
     artist: string
     url: string
+    coverArt?: string | null
     createdAt?: Date | string
   }
 
@@ -3802,6 +3861,7 @@ export namespace Prisma {
     title: string
     artist: string
     url: string
+    coverArt?: string | null
     createdAt?: Date | string
   }
 
@@ -3839,6 +3899,7 @@ export namespace Prisma {
     title?: StringFilter<"Song"> | string
     artist?: StringFilter<"Song"> | string
     url?: StringFilter<"Song"> | string
+    coverArt?: StringNullableFilter<"Song"> | string | null
     userId?: StringFilter<"Song"> | string
     createdAt?: DateTimeFilter<"Song"> | Date | string
   }
@@ -3848,6 +3909,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     createdAt?: Date | string
+    slug?: string | null
   }
 
   export type UserUncheckedCreateWithoutSongsInput = {
@@ -3855,6 +3917,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     createdAt?: Date | string
+    slug?: string | null
   }
 
   export type UserCreateOrConnectWithoutSongsInput = {
@@ -3878,6 +3941,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateWithoutSongsInput = {
@@ -3885,6 +3949,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SongCreateManyUserInput = {
@@ -3892,6 +3957,7 @@ export namespace Prisma {
     title: string
     artist: string
     url: string
+    coverArt?: string | null
     createdAt?: Date | string
   }
 
@@ -3900,6 +3966,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     artist?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    coverArt?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3908,6 +3975,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     artist?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    coverArt?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3916,6 +3984,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     artist?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    coverArt?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

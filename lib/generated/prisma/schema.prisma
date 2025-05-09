@@ -20,6 +20,7 @@ model User {
   name      String?
   songs     Song[]
   createdAt DateTime @default(now())
+  slug      String?  @unique
 }
 
 model Song {
@@ -27,6 +28,7 @@ model Song {
   title     String
   artist    String
   url       String
+  coverArt  String?
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())

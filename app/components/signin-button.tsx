@@ -1,13 +1,10 @@
-import { signIn } from "@/auth";
+'use client';
+import { signInAction } from "@/actions/signInAction";
+
 
 export function SignIn() {
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn("google", { redirectTo: "/submit" });
-      }}
-    >
+    <form action={signInAction}>
       <button
         type="submit"
         className="flex items-center gap-2 px-4 py-2 bg-white text-gray-800 border border-gray-300 rounded-md shadow hover:bg-gray-100 transition-colors"

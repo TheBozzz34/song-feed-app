@@ -8,7 +8,6 @@ export const GET = auth(async (req) => {
   }
 
   try {
-    console.log("Fetching profile feed for user:", req.auth.user?.email ?? "unknown user")
     const user = await prisma.user.findUnique({
       where: { email: req.auth.user?.email ?? "" },
     })

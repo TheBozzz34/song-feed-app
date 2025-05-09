@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
 import { prisma } from "@/lib/prisma"
+import { slugGenerator } from "./lib/utils";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -30,6 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               data: {
                 email: user.email,
                 name: user.name || "",
+                slug: slugGenerator(5),
               },
             })
           }
